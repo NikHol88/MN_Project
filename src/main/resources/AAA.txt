@@ -1,0 +1,23 @@
+1.SpringDoot+Controller(Post)
+2{
+   "steps": [
+     {
+       "stepId": 1,
+       "action": {
+         "type": "REQUEST",
+         "value": "https://ria.ru/lenta"
+       },
+       "parseWith": "JSOUP",
+       "returnType": "Document"
+     }
+   ]
+ }
+3Jsoup
+4   Document doc =  Jsoup.connect(url).get();
+
+5 "action": {
+         "type": "PARSE", 
+         "parsBy": "Атрибут,Класс",
+         "value": "Зн Атрибута или Класса"
+"returnType": "Elememt"
+Jsoup.getBy
