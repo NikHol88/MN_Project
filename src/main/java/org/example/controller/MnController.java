@@ -19,7 +19,7 @@ public class MnController {
     }
 
     @RequestMapping(value="/test",method = RequestMethod.POST)
-    public String save(@RequestBody Step steps) throws IOException {
+    public String save(@RequestBody List<Step> steps) throws IOException {
 
 
         return jsoupService.executeRequest(steps);
