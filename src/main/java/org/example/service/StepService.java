@@ -13,24 +13,10 @@ import java.util.Map;
 
 @Service
 public class StepService {
-    @Autowired
-    ApplicationContext applicationContext;
+
     public Map<Step,Object> stepListToMap( List<Step> steps){
         Map<Step,Object> stepObjectMap =new HashMap<>();
         steps.forEach(step ->stepObjectMap.put(step,new Result()) );
    return stepObjectMap; }
-    public ParserService getParserBean(ParseWith parseWith) throws Exception {
-        switch (parseWith){
-            case JSOUP -> {
-                return applicationContext.getBean(JsoupService.class);
-            }
 
-            case PHANTOMJS -> {
-                return applicationContext.getBean(JsoupService.class);
-            }
-            default -> {
-                throw new Exception();
-            }  }
-
-    }
 }

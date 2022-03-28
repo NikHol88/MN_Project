@@ -10,7 +10,8 @@ import lombok.ToString;
 public class Step {
    private int stepId;
   private   Action action;
-private String parseWith;
+  //enum
+private  ParseWith parseWith;
 private String returnType;
 
 

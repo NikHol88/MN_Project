@@ -29,7 +29,7 @@ export default function NewsField() {
         if (conf) {
             const data = {
                 method: 'post',
-                url: 'test',
+                url: 'elem',
                 baseURL: 'http://localhost:8080',
                 data: conf
             }

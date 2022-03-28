@@ -2,19 +2,19 @@ package org.example;
 
 import org.example.service.StepService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
 public class StepSave {
     Map<Step,Object> stepsObjectMap;
-    @Autowired
-StepService stepService;
 
-    public StepSave(List<Step> steps) {
+    public StepSave(Map<Step,Object> stepsObjectMap) {
 
-        this.stepsObjectMap = stepService.stepListToMap(steps);
+        this.stepsObjectMap = stepsObjectMap;
     }
 
 }
