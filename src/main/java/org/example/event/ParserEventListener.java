@@ -1,4 +1,4 @@
-package org.example.event;
+/*package org.example.event;
 
 import org.example.service.CacheService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,4 +13,4 @@ public class ParserEventListener implements ApplicationListener<AddConfigEvent> 
     public void onApplicationEvent(AddConfigEvent event) {
         System.out.println("event ok"+cacheService.getCache());
     }
-}
+}*/

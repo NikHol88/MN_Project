@@ -10,9 +10,9 @@ import java.util.Map;
 
 
 public class StepSave {
-    Map<Step,Object> stepsObjectMap;
+    Map<Step,Result> stepsObjectMap;
 
-    public StepSave(Map<Step,Object> stepsObjectMap) {
+    public StepSave(Map<Step,Result> stepsObjectMap) {
 
         this.stepsObjectMap = stepsObjectMap;
     }

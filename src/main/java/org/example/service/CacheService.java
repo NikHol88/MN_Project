@@ -10,22 +10,29 @@ import java.util.concurrent.ConcurrentHashMap;
 
 @Component
 public class CacheService {
-    Map<String,StepSave> stepSaveList;
+    Map<String, StepSave> stepSaveList;
 
-ParserEventPublisher parserEventPublisher;
-@Autowired
-    public CacheService(ParserEventPublisher parserEventPublisher ){
+    ParserEventPublisher parserEventPublisher;
+
+    @Autowired
+    public CacheService(ParserEventPublisher parserEventPublisher) {
         this.stepSaveList = new ConcurrentHashMap<>();
-        this.parserEventPublisher=parserEventPublisher;
+        this.parserEventPublisher = parserEventPublisher;
     }
 
     public String addStepSaveToList(StepSave stepSaveList) {
         String uid = UUID.randomUUID().toString();
         this.stepSaveList.put(uid, stepSaveList);
         parserEventPublisher.publishCustomEvent(uid);
-    return uid;}
+        return uid;
+    }
 
     public Map<String, StepSave> getCache() {
         return stepSaveList;
+    }
+
+    public StepSave getConfig(String name) {
+        return stepSaveList.get(name);
+
     }
 }
