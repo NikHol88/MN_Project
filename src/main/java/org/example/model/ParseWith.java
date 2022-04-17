@@ -1,4 +1,4 @@
-package org.example;
+package org.example.model;
 import org.example.service.JsoupService;
 import org.example.service.ParserService;
 

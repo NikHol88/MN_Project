@@ -1,6 +1,6 @@
 package org.example.service;
 
-import org.example.Step;
+import org.example.model.Step;
 
 import java.io.IOException;
 

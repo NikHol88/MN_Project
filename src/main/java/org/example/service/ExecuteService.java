@@ -1,6 +1,6 @@
 package org.example.service;
 
-import org.example.StepSave;
+import org.example.model.StepSave;
 import org.example.event.AddConfigEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.EventListener;

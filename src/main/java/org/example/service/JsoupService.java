@@ -1,6 +1,6 @@
 package org.example.service;
 
-import org.example.Step;
+import org.example.model.Step;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;

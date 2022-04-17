@@ -21,3 +21,63 @@
          "value": "Зн Атрибута или Класса"
 "returnType": "Elememt"
 Jsoup.getBy
+
+В ARANGO create Config(Steps) SaveConfig
+Show Configs Controller
+Find Config by Request
+
+
+  ArangoRepositiry arangoRepositiry;
+@Autowired
+    public ConfigSaveService(ArangoRepositiry arangoRepositiry) {
+        this.arangoRepositiry = arangoRepositiry;
+    }
+    public void createCollection(String collectionName) {
+
+        String dbName = "MN_Project";
+
+
+        try {
+            CollectionEntity myArangoCollection=arangoRepositiry.getArangoDB().db(dbName).createCollection(collectionName);
+            System.out.println("Collection created: " + myArangoCollection.getName());
+        } catch(ArangoDBException e) {
+            System.err.println("Failed to create collection: " + collectionName + "; " + e.getMessage());
+        }
+    }
+  //  Map<String, StepSave> stepSaveMap
+    public void saveConfig(Map<String, StepSave> stepSaveMap){
+       Map<String,Object> objectMap = new HashMap<>();
+       Set<String> key = stepSaveMap.keySet();
+       key.stream().forEach(e->{
+           Object obj = stepSaveMap.get(e);
+           System.out.println(obj);
+           objectMap.put(e,obj);
+       });
+
+
+        BaseDocument myObject = new BaseDocument();
+        myObject.setKey("myKey");
+        myObject.setProperties(objectMap);
+        DbName dbName = DbName.of("MN_Project");
+        try {
+            arangoRepositiry.getArangoDB().db(dbName).collection("StepConfig").insertDocument(myObject);
+
+            System.out.println("Document created");
+        } catch(ArangoDBException e) {
+            System.err.println("Failed to create document. " + e.getMessage());
+        }
+    }
+    public String readConfig(){
+        BaseDocument myDocument = arangoRepositiry
+                .getArangoDB()
+                .db("MN_Project")
+                .collection("StepConfig")
+                .getDocument("myKey", BaseDocument.class);
+        if (myDocument != null) {
+            System.out.println("Key: " + myDocument.getKey());
+            System.out.println(myDocument.getProperties().toString());
+           return myDocument.getKey();
+        } else {
+           return "Failed to get document: myKey";
+        }
+    }

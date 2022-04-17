@@ -1,10 +1,7 @@
 package org.example.service;
 
-import org.example.ParseWith;
-import org.example.Result;
-import org.example.Step;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
+import org.example.model.Result;
+import org.example.model.Step;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
