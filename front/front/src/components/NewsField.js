@@ -83,6 +83,26 @@ export default function NewsField() {
             })
         }
     }
+    const saveConfig = () => {
+        const conf = configParsed()
+        if (conf) {
+            const data = {
+                method: 'post',
+                url: 'savecofig',
+                baseURL: 'http://localhost:8080',
+                data: conf
+            }
+            setLoading(true)
+            axios(data).then(result => {
+                setResult(result.data)
+                setLoading(false)
+            }).catch(e => {
+                setError(true)
+                setTimeout(() => { setError(false)}, 5000);
+                setLoading(false)
+            })
+        }
+    }
     const onChange = (e) => {
         console.log(e)
         setConfig(e.target.value)
@@ -130,6 +150,7 @@ export default function NewsField() {
            visible={error}
        >
        <Button onClick={sendConfig}  loading={loading}>test </Button>
+           <Button onClick={saveConfig}  loading={loading}>saveConfig </Button>
        </Popover>
        <div   style={{  display: 'flex'}}>
       <div style={{width: '30%'}}>

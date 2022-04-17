@@ -3,13 +3,15 @@ import React, {useEffect, useState} from "react";
 import SockJsClient from "react-stomp";
 import List from "antd/es/list";
 import axios from "axios";
+import Collapse from "antd/es/collapse";
+const { Panel } = Collapse;
 
 export default function AllConfigs() {
     const SOCKET_URL = 'http://localhost:8080/parser-message';
     const [conf, setConf] = useState([]);
 
     useEffect(()=> {
-
+        setTimeout(() => {
         const data = {
             method: 'post',
             url: 'getallconfigs',
@@ -21,8 +23,24 @@ export default function AllConfigs() {
          /*   setError(true)
             setTimeout(() => { setError(false)}, 5000);
             setLoading(false)*/
-        })
+        })}, 500)
     },[])
+
+    const loadSuitableConfig = (id) => {
+        const data = {
+            method: 'post',
+            url: 'getconfig',
+            baseURL: 'http://localhost:8080',
+        }
+        axios(data).then(result => {
+            console.log('tset2')
+        }).catch(e => {
+            /*   setError(true)
+               setTimeout(() => { setError(false)}, 5000);
+               setLoading(false)*/
+        })
+    }
+
     return <div>
         <List
             itemLayout="horizontal"
@@ -30,7 +48,11 @@ export default function AllConfigs() {
             renderItem={item => (
                 <List.Item>
                     <Card title={item.name} extra={<a href="#">More</a>} style={{ width: "100%" }}>
-                        {item.description}
+                        <Collapse defaultActiveKey={[]} onChange={loadSuitableConfig(item.id)}>
+                            <Panel header="This is panel header 1" key="1">
+                                <p>text</p>
+                            </Panel>
+                        </Collapse>
                     </Card>
                 </List.Item>
             )}

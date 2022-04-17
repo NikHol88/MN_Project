@@ -1,7 +1,7 @@
 import {BrowserRouter as Router, Link, useRoutes,} from "react-router-dom";
 import Provider from "react-redux/lib/components/Provider";
 
-import React from "react";
+import React, {useEffect} from "react";
 import NewsField from "../components/NewsField";
 import UploadConfig from "../components/UploadConfigPage";
 import { Layout, Menu} from "antd";
@@ -10,6 +10,7 @@ import {UserOutlined} from "@ant-design/icons";
 import Sider from "antd/es/layout/Sider";
 import SubMenu from "antd/es/menu/SubMenu";
 import AllConfigs from "../components/AllConfigs";
+import {useLocation} from "react-router";
 
 
 const Routers = () => {
@@ -20,8 +21,16 @@ const Routers = () => {
     ]);
 };
 const {  Content } = Layout;
+const map = new Map()
+map.set("",1)
+map.set("upload",2)
+map.set("configs",3)
+
+
+
 function MainRouter()  {
     //console.log(store)
+
     return (
         //<Provider >
             <Router>
@@ -30,7 +39,7 @@ function MainRouter()  {
                     <Sider className="site-layout-background" width={200}>
                         <Menu
                             mode="inline"
-                            defaultSelectedKeys={['1']}
+                            defaultSelectedKeys={[map.get(window.location.href.split('/'))]}
                             defaultOpenKeys={['sub1']}
                             style={{ height: '100%' }}
                         >
