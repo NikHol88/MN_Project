@@ -6,7 +6,7 @@ import lombok.ToString;
 @Data
 @ToString
 public class Action {
-   private String type;
+   private ActionType type;
    private String set;
     private String value;
 

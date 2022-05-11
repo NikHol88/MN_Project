@@ -14,6 +14,6 @@ public class StepService {
     public Map<Step,Result> stepListToMap( List<Step> steps){
         Map<Step,Result> stepObjectMap =new HashMap<>();
         steps.forEach(step ->stepObjectMap.put(step,new Result()) );
-   return stepObjectMap; }
+           return stepObjectMap; }
 
 }

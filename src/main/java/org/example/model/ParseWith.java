@@ -1,10 +1,10 @@
 package org.example.model;
-import org.example.service.JsoupService;
+import org.example.service.RequestService;
 import org.example.service.ParserService;
 
 public enum ParseWith {
-    JSOUP(JsoupService.class),
-    PHANTOMJS(JsoupService.class);
+    JSOUP(RequestService.class),
+    PHANTOMJS(RequestService.class);
     Class<ParserService> obj;
 
     ParseWith(Class obj) {

@@ -29,7 +29,7 @@ public class ServiceProvider {
           parseWithParserServiceMap.put(e,parserService);
         });
     }
-    public ParserService getParserBean(ParseWith parseWith) throws Exception {
+    public ParserService getParserBean(ParseWith parseWith)  {
 
 
         return parseWithParserServiceMap.get(parseWith);  }

@@ -164,7 +164,7 @@ export default function NewsField() {
 
       </div>
        </div>
-       <SockJsClient url={SOCKET_URL}
+      {/* <SockJsClient url={SOCKET_URL}
                      topics={['/topic/message']}
                      onConnect={() => {
                          console.log("connected");
@@ -180,7 +180,7 @@ export default function NewsField() {
                          //setResult(steps[0]?.content)
                          console.log(msg);
                      }}
-                  />
+                  />*/}
    </Card>
 
 }
