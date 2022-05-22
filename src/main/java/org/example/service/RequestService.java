@@ -10,9 +10,12 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 
 @Service
-@Qualifier(value = "jsoup")
+
 //rename RequestService
-public class RequestService implements ParserService {
+public class RequestService extends ParserService {
+    public RequestService(CacheService cacheService) {
+        super(cacheService);
+    }
  /*   public String executeRequest(List<Step> steps) throws IOException {
 
         return Jsoup.connect(steps.get(0).getAction().getValue()).get().toString();
@@ -30,7 +33,7 @@ public class RequestService implements ParserService {
 
 
     @Override
-    public Object parsStep(Step step) throws IOException {
+    public Object parsStep(Step step, String uid) throws IOException {
 return
         executeElement(step);
 

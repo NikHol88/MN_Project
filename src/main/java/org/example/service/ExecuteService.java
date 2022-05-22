@@ -30,11 +30,11 @@ List<Step> stepList = stepSave
         .stream().sorted(Comparator.comparing(Step::getStepId))
         .collect(Collectors.toList());
         stepList.forEach(e->{
-           ParserService parserService = serviceProvider.getParserBean(e.getParseWith());
+           ParserService parserService = serviceProvider.getParserBean(e.getAction().getType());
             Object obj = null ;
            try {
 
-               obj =   parserService.parsStep(e);
+               obj =   parserService.parsStep(e,event.getUuid());
             } catch (IOException ex) {
                 ex.printStackTrace();
             }

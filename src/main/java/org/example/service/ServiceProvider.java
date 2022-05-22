@@ -1,5 +1,6 @@
 package org.example.service;
 
+import org.example.model.ActionType;
 import org.example.model.ParseWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,11 +17,11 @@ public class ServiceProvider {
 
     @Autowired
     List<ParserService> parserServiceList;
-    Map<ParseWith,ParserService> parseWithParserServiceMap = new HashMap<>();
+    Map<ActionType,ParserService> parseWithParserServiceMap = new HashMap<>();
 
     @PostConstruct
     public void init(){
-        Arrays.stream(ParseWith.values()).forEach(e->{
+        Arrays.stream(ActionType.values()).forEach(e->{
           ParserService parserService =  parserServiceList
                   .stream()
                   .filter(i-> i.getClass()==e.getObj())
@@ -29,8 +30,8 @@ public class ServiceProvider {
           parseWithParserServiceMap.put(e,parserService);
         });
     }
-    public ParserService getParserBean(ParseWith parseWith)  {
+    public ParserService getParserBean(ActionType actionType)  {
 
 
-        return parseWithParserServiceMap.get(parseWith);  }
+        return parseWithParserServiceMap.get(actionType);  }
 }
